@@ -79,7 +79,9 @@ namespace WebApplication1.Models_Repository
                         customers.Address = reader["Address"].ToString();
                         customers.Telephone = reader["Telephone"].ToString();
                         customers.Email = reader["Email"].ToString();
+                        _customers.Add(customers);
                     }
+                    
                     reader.Close();
                 }
                 catch (Exception)
@@ -89,6 +91,15 @@ namespace WebApplication1.Models_Repository
             }
             return _customers;
         }
+        //public List<Customers> returnAllCustomersList()
+        //{
+        //    SqlDataAdapter sda;
+        //    DataTable dt;
+        //    using (SqlConnection connection = new SqlConnection(connectionString))
+        //    {
+        //        SqlCommand cmd = new SqlCommand("[dbo].[spSelectCustomer]",connection);
+        //    }
+        //}
 
         public Customers GetCustomerById(int id)
         {
